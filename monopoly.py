@@ -4,7 +4,7 @@ import monopolyData
 class Pawn(object):
 	def __init__(self, cell):
 		self.placeAt(cell)
-
+		
 	def placeAt(self, cell):
 		self.cell = cell
 
@@ -30,7 +30,7 @@ if __name__ == "__main__":
 	import time
 	board = Board()
 
-	for i in range(100):
+	for i in range(10):
 		draw(board)
 		time.sleep(1)
 		board.move(1)

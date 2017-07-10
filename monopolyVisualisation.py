@@ -14,19 +14,31 @@ class MonopolyVisualisation(object):
 		self._cellWidth = (self._width - 2 * self._padding) / float(rowLength)
 		self._cellHeight = (self._height - 2 * self._padding) / float(rowLength)
 
-		bottomRow = zip([self._padding + i * self._cellWidth for i in range(rowLength)], [rowLength * self._cellHeight - self._padding] * rowLength)
+		bottomRow = zip(\
+			[self._padding + i * self._cellWidth for i in range(rowLength)],\
+			[rowLength * self._cellHeight - self._padding] * rowLength
+		)
 		bottomRow.reverse()
-		topRow = zip([self._padding + i * self._cellWidth for i in range(rowLength)], [self._padding] * rowLength)
-		leftColumn = zip([self._padding] * (rowLength - 2), [self._padding + self._cellHeight * i for i in range(1, rowLength - 1)])
+		topRow = zip(\
+			[self._padding + i * self._cellWidth for i in range(rowLength)],\
+			[self._padding] * rowLength
+		)
+		leftColumn = zip(\
+			[self._padding] * (rowLength - 2),\
+			[self._padding + self._cellHeight * i for i in range(1, rowLength - 1)]
+		)
 		leftColumn.reverse()
-		rightColumn = zip([self._padding + (rowLength - 1) * self._cellWidth] * (rowLength - 2), [self._padding + self._cellHeight * i for i in range(1, rowLength - 1)])
+		rightColumn = zip(\
+			[self._padding + (rowLength - 1) * self._cellWidth] * (rowLength - 2),\
+			[self._padding + self._cellHeight * i for i in range(1, rowLength - 1)]
+		)
 		self._cellPositions = bottomRow + leftColumn + topRow + rightColumn
 
 	def run(self):
 		self._tk = Tkinter.Tk()
 		self._canvas = Tkinter.Canvas(self._tk, height=self._height, width=self._width)
 		self._canvas.pack()
-		backgroundImage = Tkinter.PhotoImage(file="monopoly_background.gif")
+		backgroundImage = Tkinter.PhotoImage(file="board.gif")
 		self._canvas.create_image(0, 0, image = backgroundImage, anchor = "nw")
 		self._canvas.background = backgroundImage
 		
