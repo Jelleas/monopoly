@@ -1,5 +1,4 @@
 import Tkinter
-import tkMessageBox
 import multiprocessing
 
 class MonopolyVisualisation(object):
@@ -38,6 +37,10 @@ class MonopolyVisualisation(object):
 		self._tk = Tkinter.Tk()
 		self._canvas = Tkinter.Canvas(self._tk, height=self._height, width=self._width)
 		self._canvas.pack()
+		
+		carImage = Tkinter.PhotoImage(file="car.gif")
+		self._canvas.pawn = carImage
+
 		backgroundImage = Tkinter.PhotoImage(file="board.gif")
 		self._canvas.create_image(0, 0, image = backgroundImage, anchor = "nw")
 		self._canvas.background = backgroundImage
@@ -55,9 +58,7 @@ class MonopolyVisualisation(object):
 			board = self._boardQueue.get()
 			
 			x0, y0 = self._cellPositions[board._pawnLocation]
-			carImage = Tkinter.PhotoImage(file="car.gif")
-			self._canvas.create_image(x0 + 18, y0 + 18, image=carImage, tag="pawn")
-			self._canvas.pawn = carImage
+			self._canvas.create_image(x0 + 18, y0 + 18, image=self._canvas.pawn, tag="pawn")
 
 		self._tk.after(self._updateTime, self._update)
 		
