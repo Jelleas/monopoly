@@ -1,4 +1,4 @@
-import Tkinter
+import tkinter
 import multiprocessing
 
 class MonopolyVisualisation(object):
@@ -13,35 +13,35 @@ class MonopolyVisualisation(object):
 		self._cellWidth = (self._width - 2 * self._padding) / float(rowLength)
 		self._cellHeight = (self._height - 2 * self._padding) / float(rowLength)
 
-		bottomRow = zip(\
+		bottomRow = list(zip(\
 			[self._padding + i * self._cellWidth for i in range(rowLength)],\
 			[rowLength * self._cellHeight - self._padding] * rowLength
-		)
+		))
 		bottomRow.reverse()
-		topRow = zip(\
+		topRow = list(zip(\
 			[self._padding + i * self._cellWidth for i in range(rowLength)],\
 			[self._padding] * rowLength
-		)
-		leftColumn = zip(\
+		))
+		leftColumn = list(zip(\
 			[self._padding] * (rowLength - 2),\
 			[self._padding + self._cellHeight * i for i in range(1, rowLength - 1)]
-		)
+		))
 		leftColumn.reverse()
-		rightColumn = zip(\
+		rightColumn = list(zip(\
 			[self._padding + (rowLength - 1) * self._cellWidth] * (rowLength - 2),\
 			[self._padding + self._cellHeight * i for i in range(1, rowLength - 1)]
-		)
+		))
 		self._cellPositions = bottomRow + leftColumn + topRow + rightColumn
 
 	def run(self):
-		self._tk = Tkinter.Tk()
-		self._canvas = Tkinter.Canvas(self._tk, height=self._height, width=self._width)
+		self._tk = tkinter.Tk()
+		self._canvas = tkinter.Canvas(self._tk, height=self._height, width=self._width)
 		self._canvas.pack()
 		
-		carImage = Tkinter.PhotoImage(file="car.gif")
+		carImage = tkinter.PhotoImage(file="car.gif")
 		self._canvas.pawn = carImage
 
-		backgroundImage = Tkinter.PhotoImage(file="board.gif")
+		backgroundImage = tkinter.PhotoImage(file="board.gif")
 		self._canvas.create_image(0, 0, image = backgroundImage, anchor = "nw")
 		self._canvas.background = backgroundImage
 		
