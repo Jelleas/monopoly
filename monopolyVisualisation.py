@@ -55,16 +55,17 @@ class MonopolyVisualisation(object):
 		if not self._boardQueue.empty():
 			self._reset()
 			
-			board = self._boardQueue.get()
+			board, pawns = self._boardQueue.get()
 			
-			x0, y0 = self._cellPositions[board._pawnLocation]
-			self._canvas.create_image(x0 + 18, y0 + 18, image=self._canvas.pawn, tag="pawn")
+			for pawn in pawns:
+				x0, y0 = self._cellPositions[pawn.location]
+				self._canvas.create_image(x0 + 18, y0 + 18, image=self._canvas.pawn, tag="pawn")
 
 		self._tk.after(self._updateTime, self._update)
 		
 _boardQueue = None
 _visualisationProcess = None
-def draw(board):
+def draw(board, pawns):
 	global _boardQueue
 	global _visualisationProcess
 	
@@ -75,7 +76,7 @@ def draw(board):
 		_visualisationProcess.start()
 
 	# add board to the "to be drawed" queue
-	_boardQueue.put(board)
+	_boardQueue.put((board, pawns))
 
 def _visualize(boardQueue):
 	visualisation = MonopolyVisualisation(boardQueue)
