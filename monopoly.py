@@ -1,7 +1,7 @@
 import monopolyVisualisation
 import monopolyData
 
-class Pawn(object):
+class Piece(object):
 	def __init__(self):
 		self.location = 0
 
@@ -19,15 +19,15 @@ class Board(object):
 	def nameAt(self, location):
 		return self.names[location]
 
-def draw(board, *pawns):
-	monopolyVisualisation.draw(board, pawns)
+def draw(board, *pieces):
+	monopolyVisualisation.draw(board, pieces)
 
 if __name__ == "__main__":
 	import time
 	board = Board()
-	pawn = Pawn()
+	piece = Piece()
 
 	for i in range(10):
-		draw(board, pawn)
+		draw(board, piece)
 		time.sleep(1)
-		pawn.move(1)
+		piece.move(1)
