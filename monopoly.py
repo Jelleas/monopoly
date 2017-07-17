@@ -12,12 +12,6 @@ class Board(object):
 	def __init__(self):
 		self.names = monopolyData.names
 		self.values = monopolyData.values
-	
-	def valueAt(self, location):
-		return self.values[location]
-
-	def nameAt(self, location):
-		return self.names[location]
 
 def draw(board, *pieces):
 	monopolyVisualisation.draw(board, pieces)
