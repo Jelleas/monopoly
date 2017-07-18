@@ -6,7 +6,7 @@ class Piece(object):
 		self.location = 0
 
 	def move(self, distance):
-		self.location = (self.location + distance) % 40
+		self.location = (self.location + distance) % len(monopolyData.names)
 
 class Board(object):
 	def __init__(self):
