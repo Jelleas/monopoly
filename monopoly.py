@@ -10,8 +10,8 @@ class Piece(object):
 
 class Board(object):
 	def __init__(self):
-		self.names = monopolyData.names
-		self.values = monopolyData.values
+		self.names = monopolyData.names[:]
+		self.values = monopolyData.values[:]
 
 def draw(board, *pieces):
 	monopolyVisualisation.draw(board, pieces)
