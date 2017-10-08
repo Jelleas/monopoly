@@ -71,8 +71,9 @@ def draw(board, pieces):
 	
 	# if visualisation has not started, start
 	if not _boardQueue or not _visualisationProcess or not _visualisationProcess.is_alive():
-		_boardQueue = multiprocessing.Queue()
-		_visualisationProcess = multiprocessing.Process(target=_visualize, args=(_boardQueue,), name="monopolyVisualisation")
+		ctx = multiprocessing.get_context("spawn")
+		_boardQueue = ctx.Queue()
+		_visualisationProcess = ctx.Process(target=_visualize, args=(_boardQueue,), name="monopolyVisualisation")
 		_visualisationProcess.start()
 
 	# add board to the "to be drawed" queue
