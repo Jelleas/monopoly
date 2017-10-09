@@ -37,7 +37,7 @@ names = ["start",\
  		 "kans",\
  		 "leidschestraat",\
  		 "extra belasting",\
- 		 "klaverstraat"]
+ 		 "kalverstraat"]
  		 
 values = [0, 60, 0, 60, 0, 200, 100, 0, 100, 120,\
 		  0, 140, 120, 140, 160, 200, 180, 0, 180, 200,\
